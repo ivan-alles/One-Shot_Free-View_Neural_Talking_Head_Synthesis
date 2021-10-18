@@ -1,0 +1,38 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+# [[source]]
+# name = "pytorch"
+# url = "https://download.pytorch.org/whl/lts/1.8/torch_lts.html"
+# verify_ssl = false
+
+[packages]
+# This works without an additional [[source]]
+torch = {file = "https://download.pytorch.org/whl/lts/1.8/cu102/torch-1.8.2%2Bcu102-cp38-cp38-win_amd64.whl", sys_platform = "== 'win32'"}
+# This requires a [[source]] section,  as described here: https://github.com/pypa/pipenv/issues/4422
+# but sometimes stopps working.
+# torch = {version = "==1.8.2+cu102", index = "pytorch"}
+# torchvision installation fails, probably because of this: https://github.com/pypa/pipenv/issues/4504
+# TypeError: Expected pinned or editable requirement, got torch==1.8.2,==1.8.2+cu102
+# So run install.bat as a workaround.
+#
+# torchvision = {file = "https://download.pytorch.org/whl/lts/1.8/cu102/torchvision-0.9.2%2Bcu102-cp38-cp38-win_amd64.whl"}
+# torchvision = {version = "==0.9.2+cu102", index = "pytorch"}
+pillow = "*"
+tqdm = "*"
+numpy = "*"
+pyyaml = "*"
+opencv-python = "*"
+imageio = "*"
+scikit-image = "*"
+scikit-learn = "*"
+imageio-ffmpeg = "*"
+flask = "*"
+tensorboard = "*"
+
+[dev-packages]
+pytest = "*"
+
+[requires]
+python_version = "3.8"
