@@ -38,7 +38,7 @@ def train(config, generator, discriminator, kp_detector, he_estimator, checkpoin
 
     if 'num_repeats' in train_params or train_params['num_repeats'] != 1:
         dataset = DatasetRepeater(dataset, train_params['num_repeats'])
-    dataloader = DataLoader(dataset, batch_size=train_params['batch_size'], shuffle=True, num_workers=16, drop_last=True)
+    dataloader = DataLoader(dataset, batch_size=train_params['batch_size'], shuffle=True, num_workers=0, drop_last=True)
 
     generator_full = GeneratorFullModel(kp_detector, he_estimator, generator, discriminator, train_params, estimate_jacobian=config['model_params']['common_params']['estimate_jacobian'])
     discriminator_full = DiscriminatorFullModel(kp_detector, generator, discriminator, train_params)
